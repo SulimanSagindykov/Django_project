@@ -25,6 +25,7 @@ from django.urls import include
 
 urlpatterns += [
     path('catalog/', include('catalog.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 
 from django.views.generic import RedirectView
