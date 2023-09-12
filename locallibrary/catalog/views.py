@@ -19,7 +19,9 @@ class LoanedBooksByUserListView(LoginRequiredMixin,generic.ListView):
             .order_by('due_back')
         )
 
-class AllLoanedBooksListView(LoginRequiredMixin, generic.ListView):
+from django.contrib.auth.mixins import PermissionRequiredMixin
+
+class AllLoanedBooksListView(PermissionRequiredMixin, generic.ListView):
     model = BookInstance
     permission_required = 'catalog.can_mark_returned'
     template_name = 'catalog/bookinstance_list_all_borrowed.html'
