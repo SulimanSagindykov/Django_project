@@ -8,15 +8,12 @@ from django.contrib.auth.decorators import login_required, permission_required
 class MyModelName(models.Model):
     """A typical class defining a model, derived from the Model class."""
 
-    # Fields
     my_field_name = models.CharField(max_length=20, help_text='Enter field documentation')
     # …
 
-    # Metadata
     class Meta:
         ordering = ['-my_field_name']
 
-    # Methods
     def get_absolute_url(self):
         """Returns the URL to access a particular instance of MyModelName."""
         return reverse('model-detail-view', args=[str(self.id)])
@@ -105,7 +102,6 @@ class BookInstance(models.Model):
         """Determines if the book is overdue based on due date and current date."""
         return bool(self.due_back and date.today() > self.due_back)
     
-
 
 class Author(models.Model):
     """Model representing an author."""
